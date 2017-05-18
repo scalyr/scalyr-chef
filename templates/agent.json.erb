@@ -8,5 +8,9 @@
   // Logs are configured in:                 agent.d/logs.json
   // Server Attributes are configured in:    agent.d/server_attributes.json
 
+  <% if node['scalyr_agent']['scalyr_server'] -%>
+    scalyr_server: "<%= node['scalyr_agent']['scalyr_server'] %>
+  <% end %>
+
 }
 
