@@ -1,5 +1,10 @@
 
-rpm_package ['scalyr-repo', 'scalyr-repo-bootstrap'] do
+rpm_package ['scalyr-repo'] do
+  action :remove
+  ignore_failure true
+end
+
+rpm_package ['scalyr-repo-bootstrap'] do
   action :remove
   ignore_failure true
 end
