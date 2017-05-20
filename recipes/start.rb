@@ -1,5 +1,6 @@
 
 service 'scalyr-agent-2' do
-  action [ :start ]
+  supports :start => true, :stop => true
+  action [ :enable, :start ]
 end
 

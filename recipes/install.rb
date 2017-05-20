@@ -9,5 +9,3 @@ end
 package 'scalyr-repo'
 package 'scalyr-agent-2'
 
-include_recipe 'scalyr_agent::configure'
-
