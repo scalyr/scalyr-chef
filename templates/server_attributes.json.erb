@@ -1,0 +1,7 @@
+{
+  // Fields describing this server. These fields are attached to each log message, and
+  // can be used to filter data from a particular server or group of servers.
+  server_attributes: {
+     <%= @server_attributes.map { |key, value| "#{key}: \"#{value}\"" }.join(",\n     ") %>
+  }
+}
