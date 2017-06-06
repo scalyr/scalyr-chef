@@ -1,16 +1,12 @@
 // Configuration for the Scalyr Agent. For help:
 // 
 // https://www.scalyr.com/help/scalyr-agent-2
-
+// Your API key is configured in:          agent.d/api_key.json
+// Monitors are configured in:             agent.d/monitors.json
+// Logs are configured in:                 agent.d/logs.json
+// Server Attributes are configured in:    agent.d/server_attributes.json
 {
-  // Your API key is configured in:          agent.d/api_key.json
-  // Monitors are configured in:             agent.d/monitors.json
-  // Logs are configured in:                 agent.d/logs.json
-  // Server Attributes are configured in:    agent.d/server_attributes.json
-
-  <% if node['scalyr_agent']['scalyr_server'] -%>
-    scalyr_server: "<%= node['scalyr_agent']['scalyr_server'] %>
-  <% end %>
-
+<% @agent_settings.to_a.each_with_index do |(k, v), idx| -%>
+  <%= k %>: <%= v.inspect %><%= idx != (@agent_settings.size - 1) ? "," : "" %>
+<% end -%>
 }
-
