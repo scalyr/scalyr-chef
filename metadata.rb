@@ -14,3 +14,5 @@ recipe 'scalyr_agent::start', 'Starts the scalyr agent'
 
 issues_url 'https://github.com/scalyr/scalyr-chef/issues' if respond_to?(:issues_url)
 source_url 'https://github.com/scalyr/scalyr-chef' if respond_to?(:source_url)
+
+chef_version '>= 12.7'
