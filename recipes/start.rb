@@ -1,6 +1,6 @@
+include_recipe "scalyr_agent::service"
 
-service 'scalyr-agent-2' do
-  supports :start => true, :stop => true
-  action [ :enable, :start ]
+ruby_block "start scalyr_agent" do
+  block { true }
+  notifies :start, "service[scalyr-agent-2]"
 end
-
