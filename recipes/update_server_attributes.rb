@@ -1,3 +1,4 @@
+include_recipe "scalyr_agent::service"
 
 if node.default['scalyr_agent']['server_attributes'].nil? then
   if node['scalyr_agent']['hostname'] then
@@ -14,4 +15,5 @@ template '/etc/scalyr-agent-2/agent.d/server_attributes.json' do
   variables( {
     :server_attributes => node['scalyr_agent']['server_attributes']
   })
+  notifies :restart, "service[scalyr-agent-2]"
 end
