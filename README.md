@@ -27,7 +27,8 @@ Installs the agent, but does not update configuration or start the agent service
 ## configure
 
 Updates the config files of the agent to match the attributes assigned to a
-node.
+node.  The agent will automatically detect new, modified, or deleted files so
+you don't need to restart it after a configuration change.
 
 ## start
 
