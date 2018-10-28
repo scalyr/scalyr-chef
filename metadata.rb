@@ -4,7 +4,7 @@ maintainer_email 'support@scalyr.com'
 license 'Apache 2.0'
 description 'Installs, configures and runs the scalyr agent'
 long_description 'Installs, configures and runs the scalyr agent'
-version '0.1.2'
+version '0.1.4'
 
 recipe 'scalyr_agent::default', 'Installs, configures and starts the scalyr agent'
 recipe 'scalyr_agent::agent', 'Same as scalyr_agent::default'
