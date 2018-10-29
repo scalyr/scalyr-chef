@@ -1,6 +1,7 @@
-
-apt_package ['scalyr-repo', 'scalyr-repo-bootstrap'] do
-  action :remove
+%w[scalyr-repo scalyr-repo-bootstrap].each do |pkg|
+  apt_package pkg do
+    action :remove
+  end
 end
 
 remote_file '/tmp/scalyr-repo-bootstrap_1.2.1_all.deb' do
