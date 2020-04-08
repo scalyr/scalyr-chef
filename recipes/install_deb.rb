@@ -4,12 +4,14 @@
   end
 end
 
-remote_file '/tmp/scalyr-repo-bootstrap_1.2.1_all.deb' do
-  source 'https://www.scalyr.com/scalyr-repo/stable/latest/scalyr-repo-bootstrap_1.2.1_all.deb'
+deb_file = node['scalyr_agent']['packages']['deb']
+
+remote_file "/tmp/#{deb_file}" do
+  source "#{node['scalyr_agent']['packages']['base_url']}/#{deb_file}"
 end
 
 dpkg_package 'scalyr-repo-bootstrap' do
-  source '/tmp/scalyr-repo-bootstrap_1.2.1_all.deb'
+  source "/tmp/#{deb_file}"
   action :install
 end
 
@@ -17,4 +19,3 @@ apt_update 'update' do
   action :update
   ignore_failure true
 end
-
