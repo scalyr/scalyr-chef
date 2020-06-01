@@ -65,9 +65,28 @@ Here is an example role showing a sample configuration for a simple webserver:
     default_attributes(
       'scalyr_agent' => {
         'api_key' => 'YOUR_API_KEY_GOES_HERE',
-        'logs' => {
-          '/var/log/nginx/*.log' => 'accessLog'
-        },
+        'logs' => [
+          {
+            'path'=> '/var/log/nginx/access.log',
+            'attributes' => {
+              'parser' => 'nginx-access',
+              'serverType' => 'nginx'
+            },
+            'sampling_rules' => [
+              { 'match_expression' => '499', 'sampling_rate' => 0.05 },
+            ]
+          },
+          {
+            'path' => '/var/log/nginx/error.log',
+            'attributes' => {
+              'parser' => 'nginx-error',
+              'serverType' => 'nginx'
+            }
+          }
+        ],
+        'monitors' => [
+          { 'module' => 'scalyr_agent.builtin_monitors.nginx_monitor', 'status_url' => 'http://localhost/nginx_stub_status' }
+        ],
         'server_attributes' => {
           'tier' => 'webserver'
         }
