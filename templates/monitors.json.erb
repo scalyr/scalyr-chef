@@ -1,5 +1,4 @@
 {
   //Monitor config for scalyr agent
-  monitors: [
-  ]
+  monitors: <%= Chef::JSONCompat.to_json_pretty(@monitors) %>
 }
